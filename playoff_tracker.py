@@ -1,14 +1,10 @@
 # main interface for reporting out on playoff teams
 from statistics import mean, mode
+import pprint as p
 
 from league_data import mlb_league
 from team_class import team_class
 from mlb_league_dict import mlb_teams
-
-mlb_2019 = mlb_league()
-mlb_2019.import_season_data('GL2019.TXT')
-mlb_2019.calculate_window_over_season(60)
-playoff_teams = mlb_2019.calculate_playoff_teams_every_window(60)
 
 
 def calculate_win_stats(playoff_teams: list):
@@ -78,8 +74,14 @@ def calculate_losers(playoff_teams: set):
             print(team)
 
 
+# initialize the league, import retro sheet data, calculate 60 game playoff window, generate stats
+
+mlb_2019 = mlb_league()
+mlb_2019.import_season_data('GL2019.TXT')
+mlb_2019.calculate_window_over_season(60)
+playoff_teams = mlb_2019.calculate_playoff_teams_every_window(60)
+
 calculate_win_stats(playoff_teams)
 unique_teams = calculate_unique_teams(playoff_teams)
 calculate_losers(unique_teams)
-import pprint as p
 p.pprint(calculate_playoff_team_frequency(playoff_teams))
