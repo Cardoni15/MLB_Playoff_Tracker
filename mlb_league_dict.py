@@ -1,56 +1,56 @@
 mlb_teams = {
-    'nl' : 
+    'nl':
     {
-        'nl_east' : 
+        'nl_east':
         {
-        'ATL' : [], 
-        'MIA' : [], 
-        'NYN' : [], 
-        'PHI' : [], 
-        'WAS' : []
+            'ATL': [],
+            'MIA': [],
+            'NYN': [],
+            'PHI': [],
+            'WAS': []
         },
-        'nl_central' : 
+        'nl_central':
         {
-        'SLN' : [],
-        'CHN' : [],
-        'CIN' : [], 
-        'MIL' : [],
-        'PIT' : []
+            'SLN': [],
+            'CHN': [],
+            'CIN': [],
+            'MIL': [],
+            'PIT': []
         },
-        'nl_west' :
+        'nl_west':
         {
-        'SDN' : [], 
-        'LAN' : [], 
-        'COL' : [], 
-        'SFN' : [], 
-        'ARI' : []
+            'SDN': [],
+            'LAN': [],
+            'COL': [],
+            'SFN': [],
+            'ARI': []
         }
     },
-    'al' :
+    'al':
     {
-        'al_east' :
+        'al_east':
         {
-        'BAL' : [], 
-        'BOS' : [], 
-        'NYA' : [], 
-        'TBA' : [], 
-        'TOR' : []
+            'BAL': [],
+            'BOS': [],
+            'NYA': [],
+            'TBA': [],
+            'TOR': []
         },
-        'al_central' :
+        'al_central':
         {
-        'CHA' : [],
-        'CLE' : [], 
-        'DET' : [], 
-        'KCA' : [], 
-        'MIN' : []
+            'CHA': [],
+            'CLE': [],
+            'DET': [],
+            'KCA': [],
+            'MIN': []
         },
-        'al_west' : 
+        'al_west':
         {
-        'HOU' : [], 
-        'LAA' : [], 
-        'OAK' : [], 
-        'TEX' : [], 
-        'SEA' : []
+            'HOU': [],
+            'LAA': [],
+            'OAK': [],
+            'TEX': [],
+            'SEA': []
         }
     }
 }

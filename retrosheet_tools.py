@@ -1,7 +1,8 @@
-# Handle the parsing of game log data from retrosheet.org 
+# Handle the parsing of game log data from retrosheet.org
 # use this decoder: https://www.retrosheet.org/gamelogs/glfields.txt
 
 import csv
+
 
 def load_in_retrosheet(sheet_file: str) -> list:
     """
@@ -27,17 +28,14 @@ def extract_all_game_results(sheet_file: str) -> list:
     """
     function takes in a retrosheet for an entire season
     returns a list of every game in this format:
-    [winning] 
+    [winning]
     """
     game_logs = load_in_retrosheet(sheet_file)
     results_list = []
     for log in game_logs:
         results_list.append(calculate_game_winner(result_parser(log)))
-
-
-    
-    
     return results_list
+
 
 def calculate_game_winner(game_log):
     """
@@ -47,6 +45,3 @@ def calculate_game_winner(game_log):
         return [game_log[0], game_log[-3]]
     else:
         return [game_log[-3], game_log[0]]
-
-
-

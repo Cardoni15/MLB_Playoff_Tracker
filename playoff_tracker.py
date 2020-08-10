@@ -1,5 +1,5 @@
 # main interface for reporting out on playoff teams
-from statistics import mean,mode
+from statistics import mean, mode
 
 from league_data import mlb_league
 from team_class import team_class
@@ -10,15 +10,17 @@ mlb_2019.import_season_data('GL2019.TXT')
 mlb_2019.calculate_window_over_season(60)
 playoff_teams = mlb_2019.calculate_playoff_teams_every_window(60)
 
+
 def calculate_win_stats(playoff_teams: list):
     """
     calculate the average amount of wins based on every 16 team playoff bracket.
     """
-    i = 1
+    i = 0
     wins_list = []
     for slice_ in playoff_teams:
         for team in slice_:
             wins_list.append(team.window_records[i])
+        i = i + 1
 
     avg_wins = int(mean(wins_list))
     mode_wins = mode(wins_list)
@@ -41,9 +43,28 @@ def calculate_unique_teams(playoff_teams: list):
     return unique_teams
 
 
+def calculate_playoff_team_frequency(playoff_teams: list):
+    """
+    calculate frequency of playoff appearance for each team.
+    """
+    playoff_dict = {}
+    print(len(playoff_teams))
+    for slice_ in playoff_teams:
+        print(len(slice_))
+        for team in slice_:
+            if team.team in playoff_dict:
+                playoff_dict[team.team] += 1
+
+            else:
+                playoff_dict[team.team] = 1
+    playoff_dict = sorted(playoff_dict.items(), key=lambda x: x[1], reverse=True)
+
+    return playoff_dict
+
+
 def calculate_losers(playoff_teams: set):
     """
-    uses the MLB league dict to see who is missing. 
+    uses the MLB league dict to see who is missing.
     """
     all_teams = []
     for league in mlb_teams:
@@ -60,8 +81,5 @@ def calculate_losers(playoff_teams: set):
 calculate_win_stats(playoff_teams)
 unique_teams = calculate_unique_teams(playoff_teams)
 calculate_losers(unique_teams)
-
-
-        
-    
-
+import pprint as p
+p.pprint(calculate_playoff_team_frequency(playoff_teams))
