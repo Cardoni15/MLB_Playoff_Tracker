@@ -23,7 +23,10 @@ def calculate_win_stats(playoff_teams: list):
     min_wins = min(wins_list)
     max_wins = max(wins_list)
 
-    print([avg_wins, mode_wins, min_wins, max_wins])
+    print(f'AVG WINS: {avg_wins}')
+    print(f'MODE WINS: {mode_wins}')
+    print(f'MIN WINS: {min_wins}')
+    print(f'MAX WINS: {max_wins}')
 
 
 def calculate_unique_teams(playoff_teams: list):
@@ -35,7 +38,8 @@ def calculate_unique_teams(playoff_teams: list):
         for team in slice_:
             team_list.append(team.team)
     unique_teams = set(team_list)
-    print(len(unique_teams))
+    num_unique_teams = len(unique_teams)
+    print(f'Number of unique playoff teams: {num_unique_teams}')
     return unique_teams
 
 
@@ -44,9 +48,7 @@ def calculate_playoff_team_frequency(playoff_teams: list):
     calculate frequency of playoff appearance for each team.
     """
     playoff_dict = {}
-    print(len(playoff_teams))
     for slice_ in playoff_teams:
-        print(len(slice_))
         for team in slice_:
             if team.team in playoff_dict:
                 playoff_dict[team.team] += 1
@@ -62,13 +64,13 @@ def calculate_losers(playoff_teams: set):
     """
     uses the MLB league dict to see who is missing.
     """
+    print('Teams without a 60 game playoff appearance in 2019:')
     all_teams = []
     for league in mlb_teams:
         divisions = mlb_teams[league].keys()
         for division in divisions:
             for team in mlb_teams[league][division]:
                 all_teams.append(team)
-    print(len(all_teams))
     for team in all_teams:
         if team not in playoff_teams:
             print(team)
@@ -84,4 +86,4 @@ playoff_teams = mlb_2019.calculate_playoff_teams_every_window(60)
 calculate_win_stats(playoff_teams)
 unique_teams = calculate_unique_teams(playoff_teams)
 calculate_losers(unique_teams)
-p.pprint(calculate_playoff_team_frequency(playoff_teams))
+#p.pprint(calculate_playoff_team_frequency(playoff_teams))
