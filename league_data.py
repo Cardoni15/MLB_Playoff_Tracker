@@ -106,7 +106,7 @@ class mlb_league:
         return a list of playoff team objects
         """
         all_playoff_teams = []
-        for slice_ in range(0, 162-window):
+        for slice_ in range(0, 162-window+1):
             temp_playoff_teams = self.calculate_playoff_teams_for_window(slice_)
             all_playoff_teams.append(temp_playoff_teams)
 
